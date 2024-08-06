@@ -3,15 +3,20 @@ import { createContext, useEffect, useState } from 'react'
 import { Login } from './views/Log-in/Login'
 import { Card, Navbar } from './components'
 import { posts } from './data'
+import { socketClient } from './Socket/socketClient'
 
 export const userContext = createContext()
 
 export const App = () => {
   const [user, setuser] = useState('')
+  const socket = socketClient
 
   useEffect(() => {
-    console.log('Usuario: ', user)
-  }, [user])
+    console.log('Socket: ', socket)
+    console.log(socket.on('hello', (msg) => {
+      console.log('Mensaje del servidor: ', msg.message)
+    }))
+  }, [])
 
   return (
     <userContext.Provider value={{ user, setuser }}>
