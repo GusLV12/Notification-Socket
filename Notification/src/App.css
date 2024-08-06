@@ -1,0 +1,42 @@
+#root {
+  max-width: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 60%;
+  padding: 10px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.container {
+  width: 50vh;
+  border-radius: 5px;
+  border: 0.5px solid;
+}
