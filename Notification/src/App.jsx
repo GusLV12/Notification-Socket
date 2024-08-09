@@ -13,20 +13,21 @@ export const App = () => {
 
   useEffect(() => {
     console.log('Socket: ', socket)
-    console.log(socket.on('hello', (msg) => {
-      console.log('Mensaje del servidor: ', msg.message)
-    }))
   }, [])
+
+  useEffect(() => {
+    socketClient.emit('newUser', user)
+  }, [socketClient, user])
 
   return (
     <userContext.Provider value={{ user, setuser }}>
       <div className='container'>
         {user
           ? <>
-            <Navbar />
+            <Navbar socket={socketClient} />
             {posts.map((post) => (
 
-              <Card key={post.id} post={post} />
+              <Card key={post.id} post={post} socket={socketClient} user={user} />
             ))}
             </>
           : <Login />}
