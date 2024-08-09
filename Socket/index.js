@@ -28,7 +28,13 @@ const getUser = (userName) => {
 
 io.on('connection', (socket) => {
 
-  io.emit('hello', {message: 'Hello client'});
+  io.on('sendNotification', ({senderName, receiverName, type}) => {
+    const receiver = getUser(receiverName)
+    io.to(receiver.socketId).emit('getNotification', {
+      senderName,
+      type
+    })
+  })
 
   io.on('newUser', (userName) => {
     addNewUser(userName, socket.id);
